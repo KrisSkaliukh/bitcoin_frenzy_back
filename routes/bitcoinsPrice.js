@@ -4,7 +4,6 @@ const router = express.Router();
 const bitcoinPriceController = require('../controllers/bitcoins');
 
 router.get('/', bitcoinPriceController.getBitcoinPrice);
-
-router.patch('/update', bitcoinPriceController.changeBitcoinPrice);
+router.patch('/updatePrice', bitcoinPriceController.changeBitcoinPrice);
 
 module.exports = router;
