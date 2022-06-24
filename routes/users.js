@@ -1,9 +1,11 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const router = express.Router();
+const userControllers = require('../controllers/user');
+
+router.get('/money/:id', userControllers.getUserMoney);
+router.get('/bitcoins/:id', userControllers.getUserBitcoins);
+router.patch('/updateMoneyCount/:id', userControllers.changeCountMoney);
+router.patch('/updateBitcoinsCount/:id', userControllers.changeCountBitcoins);
 
 module.exports = router;
