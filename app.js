@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const userRouter = require('./routes/users');
 const bitcoinsPriceRouter = require('./routes/bitcoinsPrice');
+const historyRouter = require('./routes/history');
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', userRouter);
 app.use('/price', bitcoinsPriceRouter);
+app.use('/history', historyRouter);
 
 app.use((req, res, next) => {
   next(createError(404));
