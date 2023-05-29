@@ -1,0 +1,9 @@
+{
+    "development": {
+      "username": "bitcoin",
+      "password": "bitcoin",
+      "database": "bitcoin_back",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    }
+}
