@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Bitcoin.init({
     bitcoin_price: DataTypes.NUMBER,
+    userId: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Bitcoin',
