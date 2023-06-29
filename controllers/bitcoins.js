@@ -1,15 +1,8 @@
-const { Bitcoin, User } = require('../models');
+const { Bitcoin } = require('../models');
 
 module.exports = {
   async getBitcoinPrice(req, res) {
-    const { tokenVerify } = req;
-    const bitcoinPrice = await Bitcoin.findAll({
-      where: { userId: tokenVerify.id },
-      includes: [{
-        model: User,
-        as: 'user',
-      }],
-    });
+    const bitcoinPrice = await Bitcoin.findAll();
     if (bitcoinPrice) {
       return res.status(201).send(bitcoinPrice);
     }

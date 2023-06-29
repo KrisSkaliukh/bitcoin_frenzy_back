@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 const salt = bcrypt.genSaltSync(10);
-const generateJwt = (email) => jwt.sign(
-  { sub: email },
+
+const generateJwt = (id) => jwt.sign(
+  { id },
   process.env.SECRET_KEY,
   { expiresIn: '24h' },
 );
@@ -47,7 +48,7 @@ module.exports = {
       return res.status(200).json(result);
     }
     const data = {
-      token: generateJwt(person.email),
+      token: generateJwt(person.id),
       user: {
         email: person.email,
         login: person.login,
