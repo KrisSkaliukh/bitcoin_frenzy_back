@@ -2,12 +2,11 @@ const { History, User } = require('../models');
 
 module.exports = {
   async addHistory(req, res) {
-    const { tokenVerify } = req;
     const history = await History.create(
       {
         text_history: req.body.text_history,
         date: req.body.date,
-        userId: tokenVerify.id,
+        userId: req.body.id,
       },
     );
     if (history) {
@@ -21,7 +20,11 @@ module.exports = {
       includes: [{
         model: User,
         as: 'user',
-      }],
+      },
+      {
+        where: { userId: 1 },
+      },
+      ],
     });
     if (history) {
       return res.status(201).send(history);

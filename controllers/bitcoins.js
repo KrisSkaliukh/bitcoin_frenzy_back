@@ -10,13 +10,12 @@ module.exports = {
   },
 
   async changeBitcoinPrice(req, res) {
-    const { tokenVerify } = req;
     const bitcoinPrice = await Bitcoin.update(
       {
         bitcoin_price: req.body.bitcoin_price,
       },
       {
-        where: { id: tokenVerify.id },
+        where: { id: req.body.id },
         include: [{
           model: Bitcoin,
           as: 'bitcoin',
